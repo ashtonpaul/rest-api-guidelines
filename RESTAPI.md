@@ -12,8 +12,8 @@ As REST APIs become more common in many different backed systems.  the importanc
 
 ## REST API Design Guideline 
 
-1. Version your API in URL (e.g. /api/v1/) Preferably use URL method for verisoning. It gives better discoverability of a resource by looking at the URL.
-1. Use nouns for resouce naming
+1. Version your API in URL (e.g. /api/v1/) Preferably use URL method for versioning. It gives better discoverability of a resource by looking at the URL.
+1. Use nouns for resource naming
 1.  Resource names should always be plural
 > GET api/v1/companies
 > GET api/v1/employees
@@ -53,10 +53,10 @@ Accept defines a list of acceptable response formats.
   b) A [Location header](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30) which points to the new URL of the resource
 1. If Rate Limiting is necessary, use HTTP code [429](https://tools.ietf.org/html/rfc6585#section-4) for rate limiting exceeded
 - Return the headers X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset (although non standard they seem to be a widely used combination)
-- Reponse should include details explaining the condition of the rate-limit
+- Response should include details explaining the condition of the rate-limit
 - Optional to include a Retry-After header within the 429 response
 1. Use HATEOS (Hypermedia as the Engine of Application State) for better navigation through the API
-1. Be mindful about Idempotence. Safe methods like GET, HEAD, OPTIONS should return the same result everytime and should only be used for retrieving data and not changing any data. Use the appropriate actions e.g DELETE, PUT for such.
+1. Be mindful about Idempotence. Safe methods like GET, HEAD, OPTIONS should return the same result every time and should only be used for retrieving data and not changing any data. Use the appropriate actions e.g DELETE, PUT for such.
 
 ## FAQ
 1. **Frequently Asked Question 1** 
@@ -73,4 +73,3 @@ If you'd like to leave feedback, please [open an issue on Github](https://github
 
 ## License
 [Creative Commons - CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
-
