@@ -44,6 +44,15 @@ Accept defines a list of acceptable response formats.
 16. Always use lowercase letters for URI paths
 17. Limit which fields are returned by the API
 > GET /api/v1/employees?fields=id,first_name,last_name
+18. Update (e.g PUT) and create (e.g POST) should return the representation of the new resource
+- This prevents (if necessary) the API consumer to hit the API again for the updated resource
+- POST /api/v1/employees for creating a new employee should return a 201 response with
+  a) a representation of the new employee created
+  b) A [Location header](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30) which points to the new URL of the resource
+19. If Rate Limiting is necessary, use HTTP code [429](https://tools.ietf.org/html/rfc6585#section-4) for rate limiting exceeded
+- Return the headers X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset (although non standard they seem to be a widely used combination)
+- Reponse should include details explaining the condition of the rate-limit
+- Optional to include a Retry-After header within the 429 response
 
 ## FAQ
 1. Frequently Asked Question 1
