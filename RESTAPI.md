@@ -35,7 +35,7 @@ As REST APIs become more common in many different backed systems.  the importanc
 1. Use HTTP headers for Content Negotiation (serialization formats)
    - Content-Type defines the request format.
    - Accept defines a list of acceptable response formats.
-1. Default Content-Type should be json
+1. Default Content-Type should be json. If json is the default the field names should be camel cased.
 1. Allow HTTP Method Overrides. Some proxies do not support arbitrary HTTP methods or newer HTTP methods.
 1. Provide filtering, sorting, field selection and paging for collections
 1. Limit which fields are returned by the API
