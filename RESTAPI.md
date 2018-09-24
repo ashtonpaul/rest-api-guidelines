@@ -10,8 +10,9 @@ A RESTful API design should be:
 ## Introduction
 As REST APIs become more common in many different backed systems.  the importance of a clean REST API design standard is needed. The concept of REST is to separate the API structure into logical resources. REST APIs should adhere to consistent guidelines to make using them easy and intuitive. This document serves as a starting point to aide in consistent RESTful API design.
 
-## REST API Design Guideline Specification
-1. Version your API in URL (e.g. /api/v1/)
+## REST API Design Guideline 
+
+1. Version your API in URL (e.g. /api/v1/) Preferably use URL method for verisoning. It gives better discoverability of a resource by looking at the URL.
 1. Use nouns for resouce naming
 1.  Resource names should always be plural
 > GET api/v1/companies
@@ -55,6 +56,7 @@ Accept defines a list of acceptable response formats.
 - Reponse should include details explaining the condition of the rate-limit
 - Optional to include a Retry-After header within the 429 response
 1. Use HATEOS (Hypermedia as the Engine of Application State) for better navigation through the API
+1. Be mindful about Idempotence. Safe methods like GET, HEAD, OPTIONS should return the same result everytime and should only be used for retrieving data and not changing any data. Use the appropriate actions e.g DELETE, PUT for such.
 
 ## FAQ
 1. **Frequently Asked Question 1** 
