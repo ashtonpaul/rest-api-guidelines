@@ -57,6 +57,7 @@ Accept defines a list of acceptable response formats.
 - Optional to include a Retry-After header within the 429 response
 1. Use HATEOS (Hypermedia as the Engine of Application State) for better navigation through the API
 1. Be mindful about Idempotence. Safe methods like GET, HEAD, OPTIONS should return the same result every time and should only be used for retrieving data and not changing any data. Use the appropriate actions e.g DELETE, PUT for such.
+1. Keep Authorization and Authentication stateless. Don't use sessions to store authentication information for the API, each request should be self-sufficient.
 
 ## FAQ
 1. **Frequently Asked Question 1** 
