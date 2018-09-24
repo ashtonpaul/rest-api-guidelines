@@ -5,7 +5,7 @@ A RESTful API design should be:
 - Consistent
 - Follows web and HTTP Standards
 - Intuitive
-- Documented
+- Well documented
 
 ## Introduction
 As REST APIs become more common in many different backed systems.  the importance of a clean REST API design standard is needed. The concept of REST is to separate the API structure into logical resources. REST APIs should adhere to consistent guidelines to make using them easy and intuitive. This document serves as a starting point to aide in consistent RESTful API design.
@@ -19,6 +19,31 @@ As REST APIs become more common in many different backed systems.  the importanc
 Content-Type defines the request format.
 Accept defines a list of acceptable response formats.
 6. Provide filtering, sorting, field selection and paging for collections
+7. Use nouns for resource names
+8. Use UUID if possible instead of resource ids.
+- Keeps business logic away from the consumer of the API
+- It can be a security issue, this way is a preventive practice to aid in managing risks in case of developer mistakes 
+9.  Resource names should always be plural
+> GET api/v1/companies
+> GET api/v1/employees
+10. Keep using the plural name even for detail endpoints
+  GET api/v1/employees/1
+11. Sometimes a relation may exist under another resource. 
+ - Use the detail pattern for the parent resource followed by the child resource
+> GET /employees/1/departments/
+> GET /employees/1/departments/4
+12. Use standard (verb) HTTP methods for actions (GET, POST, PUT, DELETE etc)
+13. Use standard HTTP status codes 
+- 2xx (Success category)
+- 3xx (Redirection Category)
+- 4xx (Client Error Category)
+- 5xx (Server Error Category)
+14. Sorting, filtering, searching and pagination should be done via the query params and the GET method
+- Have aliases for common queries e.g GET /employees/new_hires
+15. Use hyphens instead of underscores where necessary in the URI
+16. Always use lowercase letters for URI paths
+17. Limit which fields are returned by the API
+> GET /api/v1/employees?fields=id,first_name,last_name
 
 ## FAQ
 1. Frequently Asked Question 1
