@@ -60,8 +60,8 @@ Accept defines a list of acceptable response formats.
 1. Keep Authorization and Authentication stateless. Don't use sessions to store authentication information for the API, each request should be self-sufficient.
 
 ## FAQ
-1. **Frequently Asked Question 1** 
- Response to frequently asked question 1
+1. **Frequently Asked Question 1**
+Response to frequently asked question 1
 1. **Frequently Asked Question 2**
 Response to frequently asked question 2
 1. **Frequently Asked Question 3**
