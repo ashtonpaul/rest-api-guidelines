@@ -11,7 +11,7 @@ A RESTful API design should be:
 As REST APIs become more common in many different backed systems.  the importance of a clean REST API design standard is needed. The concept of REST is to separate the API structure into logical resources. REST APIs should adhere to consistent guidelines to make using them easy and intuitive. This document serves as a starting point to aide in consistent RESTful API design.
 
 ## REST API Design Guideline 
-1. Version your API in URL (e.g. /api/v1/) Preferably use URL method for versioning. It gives better discoverability of a resource by looking at the URL. Always update the API verion when there are breaking changes. Breaking changes include 
+1. Version your API in URL (e.g. /v1/) Preferably use URL method for versioning. It gives better discoverability of a resource by looking at the URL. Always update the API verion when there are breaking changes. Breaking changes include 
    - removing any part of the API
    - a change in the response type (e.g integer to float)
    - a change in the format of a response data for any call
@@ -22,17 +22,17 @@ As REST APIs become more common in many different backed systems.  the importanc
 1. All request should be made over HTTPS (SSL) as a basic security implementation.
 1. Use nouns for resource naming
 1. Do not use file extensions in the URI
-   - BAD: **GET api/v1/employees.json**
-   - GOOD: **GET api/v1/employees**
+   - BAD: **GET /v1/employees.json**
+   - GOOD: **GET /v1/employees**
 1. Resource names should always be plural
-    > GET api/v1/companies
-    > GET api/v1/employees
+    > GET /v1/companies
+    > GET /v1/employees
 1. Keep using the plural name even for detail endpoints
-    > GET api/v1/employees/1
+    > GET /v1/employees/1
 1. Sometimes a relation may exist under another resource (sub-resource). 
    - Use the detail pattern for the parent resource followed by the child resource
-    > GET /employees/1/departments/
-    > GET /employees/1/departments/4  
+    > GET /v1/employees/1/departments/
+    > GET /v1/employees/1/departments/4  
 1. Do not include trailing foward slashes in the URI. Adds no semantic value and may cause confusion
 1. Map your exceptions in an error payload. Each error payload should include a message/reason for the error. If applicable an error code, description and/or link to more information. Errors should include all information the client needs to move forward from the error.
 1. Use HTTP headers for Content Negotiation (serialization formats)
@@ -43,7 +43,7 @@ As REST APIs become more common in many different backed systems.  the importanc
 1. Provide filtering, sorting, field selection and paging for collections
 1. For pagination use [Link Header](https://tools.ietf.org/html/rfc5988#page-6) protocol. Combine this with a "X-Total-Count" header to indicate the total number of items returned.
 1. Limit which fields are returned by the API
-    > GET /api/v1/employees?fields=id,first_name,last_name
+    > GET /v1/employees?fields=id,first_name,last_name
 1. Use nouns for resource names
 1. Use UUID if possible instead of resource ids.
    - Keeps business logic away from the consumer of the API
@@ -60,11 +60,11 @@ As REST APIs become more common in many different backed systems.  the importanc
 1. Always use lowercase letters for URI paths
 1. Update (e.g PUT, PATCH) and create (e.g POST) should return the representation of the new resource
    - This prevents (if necessary) the API consumer to hit the API again for the updated resource
-   - POST /api/v1/employees for creating a new employee should return a 201 response with
+   - POST /v1/employees for creating a new employee should return a 201 response with
      * a representation of the new employee created
      * A [Location header](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30) which points to the new URL of the resource
 1. For actions that don't require any response object like DELETE, return the appropriate code with an null response
-   - For DELETE /api/v1/employees/1 return 204 with response { data: null }
+   - For DELETE /v1/employees/1 return 204 with response { data: null }
 1. If Rate Limiting is necessary, use HTTP code [429](https://tools.ietf.org/html/rfc6585#section-4) for rate limiting exceeded
    - Return the headers X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset (although non standard they seem to be a widely used combination)
    - Response should include details explaining the condition of the rate-limit
