@@ -63,9 +63,11 @@ As REST APIs become more common in many different backed systems.  the importanc
    - Return the headers X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset (although non standard they seem to be a widely used combination)
    - Response should include details explaining the condition of the rate-limit
    - Optional to include a Retry-After header within the 429 response
+   - Don't use unix timestamp for X-Rate-Limit-Reset, use number of seconds
 1. Use HATEOS (Hypermedia as the Engine of Application State) for better navigation through the API and this prevents the client from having to construct URIs.
 1. Be mindful about Idempotence. Safe methods like GET, HEAD, OPTIONS should return the same result every time and should only be used for retrieving data and not changing any data. Use the appropriate actions e.g DELETE, PUT for such.
 1. Keep Authorization and Authentication stateless. Don't use sessions to store authentication information for the API, each request should be self-sufficient.
+1. Gzip and/or deflate should be supported. This should be expressed in the Content-Encoding header.
 
 ## FAQ
 1. **Frequently Asked Question 1**
