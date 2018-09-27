@@ -16,8 +16,9 @@ As REST APIs become more common in many different backed systems.  the importanc
    - a change in the response type (e.g integer to float)
    - a change in the format of a response data for any call
 1. If possible use a subdomain for a shorter concise URL. 
-    - GET api.example.com/v1/exmployees vs GET www.example.com/api/v1/employees
+   - GET api.example.com/v1/exmployees vs GET www.example.com/api/v1/employees
 1. Ensure CORS is enabled for public access
+1. Use root as a health-check endpoint. GET /v1 should return a response something similar to {"status": "running", "version": "abcxyz"}
 1. All request should be made over HTTPS (SSL) as a basic security implementation.
 1. Use nouns for resource naming
 1. Do not use file extensions in the URI
@@ -74,7 +75,8 @@ As REST APIs become more common in many different backed systems.  the importanc
 1. Keep Authorization and Authentication stateless. Don't use sessions to store authentication information for the API, each request should be self-sufficient.
 1. Gzip and/or deflate should be supported. This should be expressed in the Content-Encoding header.
 1. Envelope your data e.g { data: [{ ... }, { ... }]} This allows for relialby testing for response data, e.g if response['data'] does not exist, then check response['error'] to figure out why. This reduces the need of having to parse returned data to figure out if its an error or not consistently. 
-1. Use root as a health-check endpoint. GET /v1 should return a response something similar to {"status": "running", "version": "abcxyz"}
+1. When necessary include a form of caching. By either using Etag or Last-Modified
+   - Last-Modified takes a timestamp in any of the [3 specifications](http://www.ietf.org/rfc/rfc1123.txt)
 
 ## FAQ
 1. **Frequently Asked Question 1**
