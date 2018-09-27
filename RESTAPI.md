@@ -40,6 +40,7 @@ As REST APIs become more common in many different backed systems.  the importanc
 1. Default Content-Type should be json. If json is the default the field names should be snake case.
 1. Allow HTTP Method Overrides. Some proxies do not support arbitrary HTTP methods or newer HTTP methods.
 1. Provide filtering, sorting, field selection and paging for collections
+1. For pagination use [Link Header](https://tools.ietf.org/html/rfc5988#page-6) protocol. Combine this with a "X-Total-Count" header to indicate the total number of items returned.
 1. Limit which fields are returned by the API
     > GET /api/v1/employees?fields=id,first_name,last_name
 1. Use nouns for resource names
