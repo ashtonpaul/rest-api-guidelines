@@ -11,11 +11,13 @@ A RESTful API design should be:
 As REST APIs become more common in many different backed systems.  the importance of a clean REST API design standard is needed. The concept of REST is to separate the API structure into logical resources. REST APIs should adhere to consistent guidelines to make using them easy and intuitive. This document serves as a starting point to aide in consistent RESTful API design.
 
 ## REST API Design Guideline 
-
 1. Version your API in URL (e.g. /api/v1/) Preferably use URL method for versioning. It gives better discoverability of a resource by looking at the URL. Always update the API verion when there are breaking changes. Breaking changes include 
    - removing any part of the API
    - a change in the response type (e.g integer to float)
    - a change in the format of a response data for any call
+1. If possible use a subdomain for a shorter concise URL. 
+    - GET api.example.com/v1/exmployees vs GET www.example.com/api/v1/employees
+1. Ensure CORS is enabled for public access
 1. All request should be made over HTTPS (SSL) as a basic security implementation.
 1. Use nouns for resource naming
 1. Do not use file extensions in the URI
@@ -68,6 +70,7 @@ As REST APIs become more common in many different backed systems.  the importanc
 1. Be mindful about Idempotence. Safe methods like GET, HEAD, OPTIONS should return the same result every time and should only be used for retrieving data and not changing any data. Use the appropriate actions e.g DELETE, PUT for such.
 1. Keep Authorization and Authentication stateless. Don't use sessions to store authentication information for the API, each request should be self-sufficient.
 1. Gzip and/or deflate should be supported. This should be expressed in the Content-Encoding header.
+1. Envelope your data e.g { data: [{ ... }, { ... }]} This allows for relialby testing for response data, e.g if response['data'] does not exist, then check response['error'] to figure out why. This reduces the need of having to parse returned data to figure out if its an erorr or not consistently. 
 
 ## FAQ
 1. **Frequently Asked Question 1**
