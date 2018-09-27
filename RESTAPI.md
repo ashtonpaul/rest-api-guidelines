@@ -73,7 +73,7 @@ As REST APIs become more common in many different backed systems.  the importanc
 1. Be mindful about Idempotence. Safe methods like GET, HEAD, OPTIONS should return the same result every time and should only be used for retrieving data and not changing any data. Use the appropriate actions e.g DELETE, PUT for such.
 1. Keep Authorization and Authentication stateless. Don't use sessions to store authentication information for the API, each request should be self-sufficient.
 1. Gzip and/or deflate should be supported. This should be expressed in the Content-Encoding header.
-1. Envelope your data e.g { data: [{ ... }, { ... }]} This allows for relialby testing for response data, e.g if response['data'] does not exist, then check response['error'] to figure out why. This reduces the need of having to parse returned data to figure out if its an erorr or not consistently. 
+1. Envelope your data e.g { data: [{ ... }, { ... }]} This allows for relialby testing for response data, e.g if response['data'] does not exist, then check response['error'] to figure out why. This reduces the need of having to parse returned data to figure out if its an error or not consistently. 
 
 ## FAQ
 1. **Frequently Asked Question 1**
