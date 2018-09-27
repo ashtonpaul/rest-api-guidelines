@@ -35,7 +35,7 @@ As REST APIs become more common in many different backed systems.  the importanc
 1. Do not include trailing foward slashes in the URI. Adds no semantic value and may cause confusion
 1. Map your exceptions in an error payload. Each error payload should include a message/reason for the error. If applicable an error code and/or link to more information. Errors should include all information the client needs to move forward from the error.
 1. Use HTTP headers for Content Negotiation (serialization formats)
-   - Content-Type defines the request format.
+   - Content-Type defines the request format. (Content-Type: application/json)
    - Accept defines a list of acceptable response formats.
 1. Default Content-Type should be json. If json is the default the field names should be snake case.
 1. Allow HTTP Method Overrides. Some proxies do not support arbitrary HTTP methods or newer HTTP methods.
@@ -57,11 +57,13 @@ As REST APIs become more common in many different backed systems.  the importanc
    - Have aliases for common queries e.g GET /employees/new_hires
 1. Use hyphens instead of underscores where necessary in the URI. Never use camel case because of case sensitivity.
 1. Always use lowercase letters for URI paths
-1. Update (e.g PUT) and create (e.g POST) should return the representation of the new resource
+1. Update (e.g PUT, PATCH) and create (e.g POST) should return the representation of the new resource
    - This prevents (if necessary) the API consumer to hit the API again for the updated resource
    - POST /api/v1/employees for creating a new employee should return a 201 response with
      * a representation of the new employee created
      * A [Location header](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30) which points to the new URL of the resource
+1. For actions that don't require any response object like DELETE, return the appropriate code with an null response
+   - For DELETE /api/v1/employees/1 return 204 with response { data: null }
 1. If Rate Limiting is necessary, use HTTP code [429](https://tools.ietf.org/html/rfc6585#section-4) for rate limiting exceeded
    - Return the headers X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset (although non standard they seem to be a widely used combination)
    - Response should include details explaining the condition of the rate-limit
