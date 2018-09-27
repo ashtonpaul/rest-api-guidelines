@@ -16,7 +16,7 @@ As REST APIs become more common in many different backed systems.  the importanc
    - removing any part of the API
    - a change in the response type (e.g integer to float)
    - a change in the format of a response data for any call
-1. All request should be made over HTTPS as a basic security implementation.
+1. All request should be made over HTTPS (SSL) as a basic security implementation.
 1. Use nouns for resource naming
 1. Do not use file extensions in the URI
    - BAD: **GET api/v1/employees.json**
@@ -35,7 +35,7 @@ As REST APIs become more common in many different backed systems.  the importanc
 1. Use HTTP headers for Content Negotiation (serialization formats)
    - Content-Type defines the request format.
    - Accept defines a list of acceptable response formats.
-1. Default Content-Type should be json. If json is the default the field names should be camel cased.
+1. Default Content-Type should be json. If json is the default the field names should be snake case.
 1. Allow HTTP Method Overrides. Some proxies do not support arbitrary HTTP methods or newer HTTP methods.
 1. Provide filtering, sorting, field selection and paging for collections
 1. Limit which fields are returned by the API
