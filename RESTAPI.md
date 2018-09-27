@@ -33,7 +33,7 @@ As REST APIs become more common in many different backed systems.  the importanc
     > GET /employees/1/departments/
     > GET /employees/1/departments/4  
 1. Do not include trailing foward slashes in the URI. Adds no semantic value and may cause confusion
-1. Map your exceptions in an error payload. Each error payload should include a message/reason for the error. If applicable an error code and/or link to more information. Errors should include all information the client needs to move forward from the error.
+1. Map your exceptions in an error payload. Each error payload should include a message/reason for the error. If applicable an error code, description and/or link to more information. Errors should include all information the client needs to move forward from the error.
 1. Use HTTP headers for Content Negotiation (serialization formats)
    - Content-Type defines the request format. (Content-Type: application/json)
    - Accept defines a list of acceptable response formats.
